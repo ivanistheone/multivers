@@ -1,0 +1,15 @@
+@@ -220,53 +220,51 @@
+ uations. %0A
+-Solving
++To solve
+  an equation 
+-means
++is to
+  find
+-ing
+  the value
+@@ -417,23 +417,35 @@
+ t:%0A%5C%5B%0A x%5E2
+--4=
++ %5C - %5C 4 %5C = %5C 
+ 45.%0A%5C%5D%0ATo 
