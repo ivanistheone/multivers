@@ -67,6 +67,15 @@ TODO
   - Could this entire worflow be implemented on top of git/hg with branches & rebases?
 
 
+git rebase usage: 
+
+      git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] [<upstream>] [<branch>]
+
+      AWESOME!
+      The first rule of software development: Don't write code, someone has already solved the problem.
+
+
+
 
 
 
