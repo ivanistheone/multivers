@@ -75,6 +75,19 @@ git rebase usage:
       The first rule of software development: Don't write code, someone has already solved the problem.
 
 
+Plan for tomorrow
+-----------------
+
+Test out git and work on metadata format:
+
+    .multivars
+        upstream: /CurrentPorjects/Minireference/noBSguideMathMechCalc
+        notify: inc
+
+
+
+    
+
 
 
 
