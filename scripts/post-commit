@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+if [ `git rev-parse --abbrev-ref HEAD` == "master" ]; then
+   pwd
+   echo "master branch commit"
+elif [ `git rev-parse --abbrev-ref HEAD` == "inc" ]; then
+   echo "inc branch commit"
+fi
+
+
