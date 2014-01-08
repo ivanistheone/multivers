@@ -69,20 +69,27 @@ TODO
 
 git rebase usage: 
 
-      git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] [<upstream>] [<branch>]
 
       AWESOME!
       The first rule of software development: Don't write code, someone has already solved the problem.
 
 
-Plan for tomorrow
------------------
+TODO
+----
 
-Test out git and work on metadata format:
-
+1. Work on metadata format:
     .multivars
         upstream: /CurrentPorjects/Minireference/noBSguideMathMechCalc
         notify: inc
+
+2. Test out git rebase commands:
+
+    git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] [<upstream>] [<branch>]
+
+3. Test out hg rebase extension: http://mercurial.selenic.com/wiki/RebaseExtension
+
+    hg rebase [--source REV | --base REV] [--dest REV] [--collapse] [--keep] [--keepbranches] | [--continue] | [--abort]
+
 
 
 
