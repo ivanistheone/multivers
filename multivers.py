@@ -19,13 +19,18 @@ class bcolors:
 
 
 def diff(file1, file2, options):
-    """ print the diff between two files """
+    """ print the diff between two files so that I can then run
+         ../multivers.py diff left.txt right.txt --extdir=. --incdir=. --printhtmldiff
+        on it to see the semantic diffs.
+    """
 
     path1 = os.path.join(options.basedir, options.extdir, file1)
     path2 = os.path.join(options.basedir, options.incdir, file2)
 
     diffs = dmp.diff_main(file(path1).read(), file(path2).read())
     dmp.diff_cleanupSemantic(diffs)
+
+    
 
     sb = []
     for match in diffs:
@@ -45,6 +50,9 @@ def diff(file1, file2, options):
     output = ''.join(sb)
     print output
 
+    if options.printhtmldiff:
+        html = dmp.diff_prettyHtml(diffs)
+        open("lediff.html", 'w').write(html)
 
 
 def build(file1, file2, options):
@@ -118,6 +126,7 @@ if __name__ == '__main__':
     parser.add_argument('--incdir',   action="store", default="inc"  , help="Director for generated local files (destination)")
     parser.add_argument('--edtdir',   action="store", default="edt",   help="Where local edits happen")
     parser.add_argument('--basedir',  action="store", default="."  ,   help="Parent dir of ext/ edt/ patch/ inc/ dirs")
+    parser.add_argument("--printhtmldiff", action="store_true")
 
     args = parser.parse_args()
     print args
