@@ -10,7 +10,7 @@ from functools import partial
 
 def print_left_right(left_fn, right_fn, lines):
     """ A basic script for spliting a diff file into a left and a right file,
-        so that I can run 
+        so that I can run"""
     
     left_f = open(left_fn, "w")
     right_f = open(right_fn, "w")
