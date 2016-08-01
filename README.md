@@ -2,8 +2,6 @@ multivers
 =========
 Tools for managing multiple versions of text files and content transclusion.
 
-
-
 Motivation
 ----------
 I would like to use part of the material from the [No bullshit guite to math and physics](http://minireference.com)
@@ -59,18 +57,18 @@ We assume the initial conditions are as follows:
 1. The author makes edits to the main text of the book in the `master` branch,
    and commits them using:
    
-       git add filechanged.tex
-       git ci -m"Fixed a typo in filechanged.tex"
+        git add filechanged.tex
+        git ci -m"Fixed a typo in filechanged.tex"
        
 2. The author receives a notification that `master` branch has derivative works
 
-       echo "Hi $AUTHOR, not branch `vers/LA` is a derivative work"
+        echo "Hi $AUTHOR, not branch `vers/LA` is a derivative work"
 
 3. The author rebases the `vers/LA` branch on `master`:
 
-       git co vers/LA
-       git rebase master
-       # manually fix problems if rebase isn't clean
+        git co vers/LA
+        git rebase master
+        # manually fix problems if rebase isn't clean
 
 4. The system automatically (commit hook?) all repos subscribed to the `vers/LA`
    version of the book of the changes.
@@ -81,7 +79,7 @@ Tech research
 
 1. Test out git rebase commands:
 
-    git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] [<upstream>] [<branch>]
+        git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] [<upstream>] [<branch>]
 
 2. Investigate git tags
 
