@@ -40,6 +40,9 @@ Design
     derivatives of derivatives will have dangling parent pointers to be rebased too.
     We need to use tags or some other mechanism to keep derivatives of derivatives in sync.
     Also, need to standardize git hooks (commit hook?) to notify derivative works.
+    Related: perhaps we want to use the "mercurial way" and keep up to date with upsteam
+    edits by merging them into features/version branches? It avaoids the commit-hash changing
+    problem but makes the whoel thing more complicated (end user would have to knwo what merge is).
   - Wrap commands as custom [CLI and web interface for authors](https://minireference.com/blog/git-for-authors/)
 
   
@@ -80,6 +83,25 @@ Tech research
 1. Test out git rebase commands:
 
         git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] [<upstream>] [<branch>]
+
+
+2. Test using .hg rebase:
+   Mark branch as "draft mode":
+
+        hg phase --draft --force -r <first commit on vers/LA>
+
+   Rebase all changes on vers/LA onto latest default branch:
+
+        hg rebase -d default --keepbranches
+
+   Now branch `vers/LA` has two heads. 
+  
+   Required to make this happen:
+
+        cat .hg/hgrc
+            [extensions]
+            rebase =
+
 
 2. Investigate git tags
 
