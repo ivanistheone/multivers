@@ -2,6 +2,11 @@ multivers
 =========
 Tools for managing multiple versions of text files and content transclusion.
 
+Alternative name idea: `salmon`; because changes godda flow upstream!
+Also analogy with salmon fish (as a kid you studied fro these books, now it's time
+to return to them and add your contributions).
+
+
 Motivation
 ----------
 I would like to use part of the material from the [No bullshit guite to math and physics](http://minireference.com)
