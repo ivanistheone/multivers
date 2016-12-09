@@ -82,6 +82,32 @@ We assume the initial conditions are as follows:
    version of the book of the changes.
 
 
+
+Rebasing
+--------
+Suppose Jane uses the content in `vers/LA` of the main repo from a few months ago,
+and wants to update the latest changes from the main repo. She can `fetch` the commits using
+
+    git fetch origin
+
+then co her local branch `vers/LA` and rebase it on origin/vers/LA 
+
+    git rebase origin/vers/LA
+
+or equivalently merge will also work:
+
+    git merge origin/vers/LA
+
+If the commits on the `vers/LA` were rewritten (e.g. using rebase -i then squash)
+you won't be able to merge or rebase cleanly (conflict).
+In this case, you can overwrite your local branch vers/LA and set its state to origin/vers/LA using: 
+
+    git fetch origin
+    git reset --hard origin/vers/LA
+
+
+
+
 Tech research
 -------------
 
@@ -112,6 +138,18 @@ Tech research
 
 2. Check how to setup git hooks and possibly 
 
+
+Issues
+------
+ 
+ 1. Commit hashes change after rebasing
+ 2. Merge fails if source changed:
+    - surface rebase conflict to user
+        - what's the UI?
+        - what are the commands?)
+    - but better fail partially than fully
+      e.g. vers/LA consists of 50 individual commits,
+      so even if rebase partially fails the systme still produces a usable book
 
 
 

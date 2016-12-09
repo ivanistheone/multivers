@@ -20,7 +20,7 @@ env.FIXTURES_DIR = 'tests/fixtures'
 
 def newversion(repo, name, parent='master'):
     """
-    Create a git branch (new vers) called `vers/name` forked of `parent` branch.
+    Create a new git branch called `vers/name` forked off `parent` branch.
     """
     pass
 
@@ -56,8 +56,33 @@ def suggestedits(repo, upstream=None):
 
 
 
+# MEDIUM LEVEL API
+################################################################################
 
-# GIT COMMANDS
+@task
+def rebase_local_vers(branch, onto='master'):
+    """
+    Rebases local `branch` on top of `master` an publish.
+    """
+    # git co branch
+    # git rebase master
+    pass
+
+@task
+def rebase_from_remote(branch, onto='master'):
+    """
+    Fetch new changes of `branch` (possibly rebased
+    """
+    # git fetch
+    # git co branch
+    # git rebase origin/branch   >> First, rewinding head to replay your work on top of it...
+    pass
+
+
+
+
+
+# LOW LEVEL GIT COMMANDS
 ################################################################################
 
 @task
@@ -137,6 +162,7 @@ def diffcommits(repo, left='HEAD', right='HEAD'):
 def status(repo):
     with lcd(repo):
         local('git status')
+
 
 
 # TESTS COMMANDS
