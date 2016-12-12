@@ -54,6 +54,17 @@ def suggestedits(repo, upstream=None):
     """
     pass
 
+@task
+def showdiff(repo, before, after, format=None):
+    """
+    Show output output of `diff --color-words` for the set of changes
+    that start at the `before`-commit and end at the `after`-commit.
+    Set `format='html'` to produce HTML diff file in current directory.
+    """
+    cmd = 'git -c color.diff.new=blue diff --color-words ' + before + ' ' + after
+    if format is not None and format.lower()=='html':
+        cmd += ' | aha > diff_' + before + '_' + after + '.html'
+    local(cmd)
 
 
 # MEDIUM LEVEL API
