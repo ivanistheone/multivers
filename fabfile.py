@@ -7,7 +7,7 @@ from __future__ import print_function, unicode_literals
 import os
 import sys
 
-from fabric.api import local, lcd, task, env, hide
+from fabric.api import local, lcd, task, env, hide, prompt
 from fabric.colors import red, green, yellow, cyan
 
 # SETTINGS
@@ -30,11 +30,29 @@ def workon(repo, branch, vers=None):    # ??? 'vers/math' or just 'math' ???
     """
     pass
 
+@task
 def save(repo):
     """
     Save changes done on the working directory to the local repository.
     """
-    pass
+    with lcd(repo):
+        lines = local('git status --porcelain',capture=True).split("\n")
+        commit_msg = ""
+        for change in lines:
+            if change:
+              (changetype,filename) = change.strip().split(" ", 1)
+              filename = filename.strip()
+              if changetype == 'M':
+                  prompt_text = "Include modifications to '%s'?" % (filename,)
+              else:
+                  prompt_text = "Include new file '%s'?" % (filename,)
+              response = prompt(prompt_text)
+              response = response.lower()
+              if len(response) > 0 and (response[0] == 'y' or response[0] == 't'):
+                  local('git add %s' % (filename,))
+                  commit_msg = "%s %s" % (commit_msg, filename)
+        if commit_msg:
+            local('git commit -m "%s"' % (commit_msg,))
 
 def saveas(repo, newbr):
     """
