@@ -1,1 +1,1 @@
-Fabric==1.13.1
+fab-classic==1.19.1
